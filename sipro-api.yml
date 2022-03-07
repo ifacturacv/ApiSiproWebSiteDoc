@@ -1,0 +1,118 @@
+openapi: 3.0.1
+info:
+  title: SIPRO Website OpenAPI definition
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:5000'
+    description: Localhost
+  - url: "https://devadmin.serviciosintegradospro.com"
+    description: Develop
+security:
+  - basicAuth: [ ]
+paths:
+  /WebSite/CreateUser:
+    post:
+      tags:
+        - WebsiteController
+      operationId: CreateUser
+      requestBody: {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UserRequest"
+            }
+          }
+        },
+        required: true
+      }
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+  /Website/CreateCuenta:
+    post:
+      tags:
+        - WebsiteController
+      operationId: CreateCuenta
+      requestBody: {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AccountRequest"
+            }
+          }
+        },
+        required: true
+      }
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    UserRequest:
+      type: object
+      properties:
+        Name:
+          type: string
+        Email:
+          type: string
+        Address:
+          type: string
+        PhoneNumber:
+          type: string
+    UserResponse:
+      type: object
+      properties:
+        CreadoPor:
+          type: integer
+          format: int32
+        Usuario:
+          type: string
+        Pass:
+          type: string
+        Success:
+          type: string
+        Message:
+          type: string
+        StatusCode:
+          type: integer
+          format: int32
+    AccountRequest:
+      type: object
+      properties:
+        TipoEntidad:
+          type: integer
+          format: int32
+        Identificacion:
+          type: string
+        Nombre:
+          type: string
+        PrimerApellido:
+          type: string
+        SegundoApellido:
+          type: string
+        CorreoElectronico:
+          type: string
+    AccountResponse:
+      type: object
+      properties:
+        IdCuenta:
+          type: string
+        Success:
+          type: string
+        Message:
+          type: string
+        StatusCode:
+          type: integer
+          format: int32
