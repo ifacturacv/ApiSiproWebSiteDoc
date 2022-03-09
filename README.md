@@ -1,3 +1,3 @@
 # ApiSiproWebSiteDoc
 
-Definicion de los endpoints expuestos desde la API para el consumo en el sitio web
+Definición de los endpoints expuestos desde la API (AdminSipro) para el consumo en el sitio web
