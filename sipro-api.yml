@@ -54,6 +54,28 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/AccountResponse'
+  /Website/CreateCuentaPaquete:
+    post:
+      tags:
+        - WebsiteController
+      operationId: CreateCuentaPaquete
+      requestBody: {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CuentaPaqueteRequestList"
+            }
+          }
+        },
+        required: true
+      }
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CuentaPaqueteResponse'
 components:
   securitySchemes:
     basicAuth:
@@ -116,3 +138,51 @@ components:
         StatusCode:
           type: integer
           format: int32
+    CuentaPaqueteRequest:
+      type: object
+      properties:
+        CuentaId:
+          type: string
+        PaqueteId:
+          type: string
+        PaquetePrincipal:
+          type: integer
+          format: int32
+        CobroId:
+          type: integer
+          format: int32
+        Cantidad:
+          type: integer
+          format: int32
+        RenovacionAuto:
+          type: integer
+          format: int32
+        Activo:
+          type: integer
+          format: int32
+        CreadoPor:
+          type: integer
+          format: int32
+        FechaCompra:
+          type: string
+        FechaVence:
+          type: string
+        FechaProximoCobro:
+          type: string
+        FechaCrea:
+          type: string
+    CuentaPaqueteRequestList:
+      type: array
+      items:
+        "$ref": "#/components/schemas/CuentaPaqueteRequest"
+    CuentaPaqueteResponse:
+      type: object
+      properties:
+        Success:
+          type: string
+        Message:
+          type: string
+        StatusCode:
+          type: integer
+          format: int32
+
